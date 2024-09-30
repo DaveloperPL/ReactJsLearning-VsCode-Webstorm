@@ -22,6 +22,17 @@ function App() {
           Learn React
         </a>
       </header>
+      <div className="container mt-5">
+      <div className="card bg-primary text-white p-4 shadow-lg" style={{ borderRadius: '15px' }}>
+        <div className="card-body">
+          <h4 className="card-title">Cool Blue Text Box</h4>
+          <p className="card-text">
+            This is a cool, blue-colored text box created using Bootstrap! It features a blue
+            background, white text, and rounded corners.
+          </p>
+        </div>
+      </div>
+    </div>
     </div>
   );
 }
