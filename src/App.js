@@ -7,14 +7,34 @@ import MyButton from './components/myButton'
 function App() {
 
   const [hello, setHello] = useState(true);
+  const [pokemon, setPokemon] = useState(null);
+  const [pokemonName, setPokemonName] = useState(''); // State to hold input value
 
+  const handleInputChange = (e) => {
+    setPokemonName(e.target.value); // Update pokemonName with input value
+  };
 
+  const search = async () => {
+    try{
+      const url = `https://pokeapi.co/api/v2/pokemon/${pokemonName.toLowerCase()}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      setPokemon(data); // Update state with the API response
+      
+    }catch (error){
+
+    }
+   
+  }
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        <button onClick={search}>Fetch Pokemon</button>
+        <input type='text' onChange={handleInputChange}></input>
+        <p>{pokemon ? `Name: ${pokemon.name}, Height: ${pokemon.height}` : 'No data fetched yet'}</p>
+        <p id='1'>
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <MyButton/>
